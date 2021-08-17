@@ -1,5 +1,6 @@
 package com.studioequipe.xmlmetadata.metadata;
 
+import com.studioequipe.xmlmetadata.StructureXML;
 import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -72,30 +73,30 @@ public class Image extends Metadata {
    */
   @Override
   public Element getXML(Document document) throws ParserConfigurationException {
-    Element node = document.createElement("image");
+    Element node = document.createElement(StructureXML.NODE_IMAGE);
 
-    Element codec = document.createElement("codec");
+    Element codec = document.createElement(StructureXML.IMAGE_CODEC);
     codec.setTextContent(this.codec);
     node.appendChild(codec);
 
-    Element balayage = document.createElement("balayage");
+    Element balayage = document.createElement(StructureXML.IMAGE_BALAYAGE);
     balayage.setTextContent(this.balayage);
     node.appendChild(balayage);
 
-    Element resolution = document.createElement("resolution");
+    Element resolution = document.createElement(StructureXML.IMAGE_RESOLUTION);
     {
-      Element largeur = document.createElement("largeur");
+      Element largeur = document.createElement(StructureXML.IMAGE_RESOLUTION_LARGEUR);
       largeur.setTextContent(this.largeur + "");
       resolution.appendChild(largeur);
 
-      Element hauteur = document.createElement("hauteur");
+      Element hauteur = document.createElement(StructureXML.IMAGE_RESOLUTION_HAUTEUR);
       hauteur.setTextContent(this.hauteur + "");
       resolution.appendChild(hauteur);
     }
 
     node.appendChild(resolution);
 
-    Element ratio = document.createElement("ratio");
+    Element ratio = document.createElement(StructureXML.IMAGE_RATIO);
     ratio.setTextContent(this.ratio);
     node.appendChild(ratio);
 
@@ -179,24 +180,24 @@ public class Image extends Metadata {
     for (int i = 0; i < image.getLength(); i++) {
       if (image.item(i).getNodeType() == Node.ELEMENT_NODE) {
         switch (image.item(i).getNodeName()) {
-          case "codec":
+          case StructureXML.IMAGE_CODEC:
             this.codec = image.item(i).getTextContent();
             break;
 
-          case "ratio":
+          case StructureXML.IMAGE_RATIO:
             this.ratio = image.item(i).getTextContent();
             break;
 
-          case "resolution":
+          case StructureXML.IMAGE_RESOLUTION:
             NodeList resolution = image.item(i).getChildNodes();
 
             for (int j = 0; j < resolution.getLength(); j++) {
               if (resolution.item(j).getNodeType() == Node.ELEMENT_NODE) {
                 switch (resolution.item(j).getNodeName()) {
-                  case "largeur":
+                  case StructureXML.IMAGE_RESOLUTION_LARGEUR:
                     this.largeur = Integer.parseInt(resolution.item(j).getTextContent());
                     break;
-                  case "hauteur":
+                  case StructureXML.IMAGE_RESOLUTION_HAUTEUR:
                     this.hauteur = Integer.parseInt(resolution.item(j).getTextContent());
                     break;
                 }

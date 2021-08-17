@@ -1,5 +1,6 @@
 package com.studioequipe.xmlmetadata.metadata;
 
+import com.studioequipe.xmlmetadata.StructureXML;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -34,15 +35,15 @@ public class ContenuElement {
     for (int i = 0; i < contenu_element.getLength(); i++) {
       if (contenu_element.item(i).getNodeType() == Node.ELEMENT_NODE) {
         switch (contenu_element.item(i).getNodeName()) {
-          case "timecode_debut":
+          case StructureXML.CONTENU_LISTE_ELEMENT_TIMECODE_DEBUT:
             this.timecode_debut = contenu_element.item(i).getTextContent();
             break;
 
-          case "timecode_fin":
+          case StructureXML.CONTENU_LISTE_ELEMENT_TIMECODE_FIN:
             this.timecode_fin = contenu_element.item(i).getTextContent();
             break;
 
-          case "description":
+          case StructureXML.CONTENU_LISTE_ELEMENT_TIMECODE_DESCRIPTION:
             this.description = contenu_element.item(i).getTextContent();
             break;
         }

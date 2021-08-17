@@ -1,4 +1,4 @@
-package com.studioequipe.xmlmetadata;
+package com.studioequipe.xmlmetadata.exception;
 
 /**
  *

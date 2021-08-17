@@ -41,7 +41,7 @@ public class Main {
 
       Audio audio = new Audio();
       audio.setCodec("PCM");
-      audio.setEchantillonnage(48000);
+      audio.setFrequence(48000);
       audio.setProfondeur(24);
 
       audio.addPisteAudio(new PisteAudio(1, "VO", "BR", "LtRt", "L", "-23dbFs"));

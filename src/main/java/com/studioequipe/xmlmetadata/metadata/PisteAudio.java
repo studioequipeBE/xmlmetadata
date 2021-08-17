@@ -1,5 +1,9 @@
 package com.studioequipe.xmlmetadata.metadata;
 
+import com.studioequipe.xmlmetadata.StructureXML;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 /**
  * Les pistes audios dans la partie audio.
  *
@@ -20,7 +24,7 @@ public class PisteAudio {
   /**
    * Mix de l'audio.
    */
-  private String mix;
+  private String mixe;
 
   /**
    * Système de reproduction.
@@ -37,10 +41,42 @@ public class PisteAudio {
    */
   private String loudness;
 
-  public PisteAudio(int numero, String version, String mix, String systeme_reproduction, String canal, String loudness) {
+  public PisteAudio(NodeList piste_audio) {
+    for (int i = 0; i < piste_audio.getLength(); i++) {
+      if (piste_audio.item(i).getNodeType() == Node.ELEMENT_NODE) {
+        switch (piste_audio.item(i).getNodeName()) {
+          case StructureXML.AUDIO_PISTE_AUDIO_NUMERO:
+            numero = Integer.parseInt(piste_audio.item(i).getTextContent());
+            break;
+
+          case StructureXML.AUDIO_PISTE_AUDIO_VERSION:
+            version = piste_audio.item(i).getTextContent();
+            break;
+
+          case StructureXML.AUDIO_PISTE_AUDIO_MIXE:
+            mixe = piste_audio.item(i).getTextContent();
+            break;
+
+          case StructureXML.AUDIO_PISTE_AUDIO_SYSTEME_REPRODUCTION:
+            systeme_reproduction = piste_audio.item(i).getTextContent();
+            break;
+
+          case StructureXML.AUDIO_PISTE_AUDIO_CANAL:
+            canal = piste_audio.item(i).getTextContent();
+            break;
+
+          case StructureXML.AUDIO_PISTE_AUDIO_LOUDNESS:
+            loudness = piste_audio.item(i).getTextContent();
+            break;
+        }
+      }
+    }
+  }
+
+  public PisteAudio(int numero, String version, String mixe, String systeme_reproduction, String canal, String loudness) {
     this.numero = numero;
     this.version = version;
-    this.mix = mix;
+    this.mixe = mixe;
     this.systeme_reproduction = systeme_reproduction;
     this.canal = canal;
     this.loudness = loudness;
@@ -69,8 +105,8 @@ public class PisteAudio {
    *
    * @return
    */
-  public String getMix() {
-    return this.mix;
+  public String getMixe() {
+    return this.mixe;
   }
 
   /**

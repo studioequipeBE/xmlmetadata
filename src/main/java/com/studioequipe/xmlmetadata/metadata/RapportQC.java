@@ -1,5 +1,6 @@
 package com.studioequipe.xmlmetadata.metadata;
 
+import com.studioequipe.xmlmetadata.StructureXML;
 import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -37,7 +38,7 @@ public class RapportQC {
    * @throws ParserConfigurationException
    */
   public Element getXML(Document document) throws ParserConfigurationException {
-    Element node = document.createElement("rapport_qc");
+    Element node = document.createElement(StructureXML.NODE_RAPPORT_QC);
 
     return node;
   }

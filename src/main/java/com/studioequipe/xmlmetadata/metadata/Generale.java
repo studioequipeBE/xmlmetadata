@@ -1,5 +1,6 @@
 package com.studioequipe.xmlmetadata.metadata;
 
+import com.studioequipe.xmlmetadata.StructureXML;
 import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -62,23 +63,23 @@ public class Generale {
     for (int i = 0; i < general.getLength(); i++) {
       if (general.item(i).getNodeType() == Node.ELEMENT_NODE) {
         switch (general.item(i).getNodeName()) {
-          case "fichier_lie":
+          case StructureXML.GENERALE_FICHIER_LIER:
             this.fichier_lie = general.item(i).getTextContent();
             break;
 
-          case "type":
+          case StructureXML.GENERALE_TYPE:
             this.type_fichier = general.item(i).getTextContent();
             break;
 
-          case "poids":
+          case StructureXML.GENERALE_POIDS:
             this.poids = general.item(i).getTextContent();
             break;
 
-          case "titre":
+          case StructureXML.GENERALE_TITRE:
             this.titre = general.item(i).getTextContent();
             break;
 
-          case "checksum":
+          case StructureXML.GENERALE_CHECKSUM:
             this.checksum = general.item(i).getTextContent();
             break;
         }
@@ -95,25 +96,25 @@ public class Generale {
    * @throws ParserConfigurationException
    */
   public Element getXML(Document document) throws ParserConfigurationException {
-    Element node = document.createElement("general");
+    Element node = document.createElement(StructureXML.NODE_GENERALE);
 
-    Element titre = document.createElement("titre");
+    Element titre = document.createElement(StructureXML.GENERALE_TITRE);
     titre.setTextContent(this.titre);
     node.appendChild(titre);
 
-    Element fichier_lie = document.createElement("fichier_lie");
+    Element fichier_lie = document.createElement(StructureXML.GENERALE_FICHIER_LIER);
     fichier_lie.setTextContent(this.fichier_lie);
     node.appendChild(fichier_lie);
 
-    Element type_fichier = document.createElement("type_fichier");
+    Element type_fichier = document.createElement(StructureXML.GENERALE_TYPE);
     type_fichier.setTextContent(this.type_fichier);
     node.appendChild(type_fichier);
 
-    Element poids = document.createElement("poids");
+    Element poids = document.createElement(StructureXML.GENERALE_POIDS);
     poids.setTextContent(this.poids);
     node.appendChild(poids);
 
-    Element checksum = document.createElement("checksum");
+    Element checksum = document.createElement(StructureXML.GENERALE_CHECKSUM);
     checksum.setTextContent(this.checksum);
     node.appendChild(checksum);
 
@@ -121,14 +122,16 @@ public class Generale {
   }
 
   /**
+   * Définit le fichier lié.
    *
-   * @param fichier_lie
+   * @param fichier_lie Nom du fichier lié.
    */
   public void setFichierLie(String fichier_lie) {
     this.fichier_lie = fichier_lie;
   }
 
   /**
+   * Définit le type de fichier.
    *
    * @param type_fichier
    */
@@ -137,6 +140,7 @@ public class Generale {
   }
 
   /**
+   * Définit le poids.
    *
    * @param poids
    */
@@ -145,6 +149,7 @@ public class Generale {
   }
 
   /**
+   * Définit le titre.
    *
    * @param titre
    */
@@ -153,6 +158,7 @@ public class Generale {
   }
 
   /**
+   * Définit le checksum.
    *
    * @param checksum
    */

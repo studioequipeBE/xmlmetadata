@@ -1,5 +1,6 @@
 package com.studioequipe.xmlmetadata;
 
+import com.studioequipe.xmlmetadata.exception.ModeNotFoundException;
 import com.studioequipe.xmlmetadata.metadata.Audio;
 import com.studioequipe.xmlmetadata.metadata.Contenu;
 import com.studioequipe.xmlmetadata.metadata.Generale;
@@ -204,32 +205,32 @@ public class XMLMetadata {
     for (int i = 0; i < racineNoeuds.getLength(); i++) {
       if (racineNoeuds.item(i).getNodeType() == Node.ELEMENT_NODE) {
         switch (racineNoeuds.item(i).getNodeName()) {
-          case "general":
+          case StructureXML.NODE_GENERALE:
             System.out.println("extract : general");
             this.general = new Generale((NodeList) racineNoeuds.item(i).getChildNodes());
             break;
-          case "image":
+          case StructureXML.NODE_IMAGE:
             System.out.println("extract : image");
             this.image = new Image((NodeList) racineNoeuds.item(i).getChildNodes());
             break;
-          case "audio":
+          case StructureXML.NODE_AUDIO:
             System.out.println("extract : audio");
             this.audio = new Audio((NodeList) racineNoeuds.item(i).getChildNodes());
             break;
-          case "soustitre":
+          case StructureXML.NODE_SOUSTITRE:
             System.out.println("extract : soustitre");
             this.sous_titre = new SousTitre((NodeList) racineNoeuds.item(i).getChildNodes());
             break;
-          case "rapport_qc":
+          case StructureXML.NODE_RAPPORT_QC:
             System.out.println("extract : qc");
             this.rapport_qc = new RapportQC((NodeList) racineNoeuds.item(i).getChildNodes());
             break;
-          case "timecode":
+          case StructureXML.NODE_TIMECODE:
             System.out.println("extract : timecode");
             this.timecode = new Timecode((NodeList) racineNoeuds.item(i).getChildNodes());
             break;
 
-          case "liste_contenu":
+          case StructureXML.NODE_CONTENU:
             System.out.println("extract : contenu");
             this.contenu = new Contenu((NodeList) racineNoeuds.item(i).getChildNodes());
             break;

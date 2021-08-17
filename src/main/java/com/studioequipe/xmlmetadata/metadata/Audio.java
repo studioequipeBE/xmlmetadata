@@ -1,5 +1,6 @@
 package com.studioequipe.xmlmetadata.metadata;
 
+import com.studioequipe.xmlmetadata.StructureXML;
 import java.util.ArrayList;
 import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
@@ -27,7 +28,7 @@ public class Audio {
   /**
    * Fréquence d'échantillonnage audio.
    */
-  private int echantillonnage;
+  private int frequence;
 
   /**
    * Profondeur (en bit) de l'audio.
@@ -52,16 +53,29 @@ public class Audio {
     for (int i = 0; i < audio.getLength(); i++) {
       if (audio.item(i).getNodeType() == Node.ELEMENT_NODE) {
         switch (audio.item(i).getNodeName()) {
-          case "codec":
+          case StructureXML.AUDIO_CODEC:
             this.codec = audio.item(i).getTextContent();
             break;
 
-          case "echantillonnage":
-            this.echantillonnage = Integer.parseInt(audio.item(i).getTextContent());
+          case StructureXML.AUDIO_FREQUENCE:
+            this.frequence = Integer.parseInt(audio.item(i).getTextContent());
             break;
 
-          case "profondeur":
+          case StructureXML.AUDIO_PROFONDEUR:
             this.profondeur = Integer.parseInt(audio.item(i).getTextContent());
+            break;
+
+          case StructureXML.AUDIO_LISTE_PISTE_AUDIO:
+            NodeList liste = audio.item(i).getChildNodes();
+            for (int j = 0; j < liste.getLength(); j++) {
+              if (liste.item(j).getNodeType() == Node.ELEMENT_NODE) {
+                switch (liste.item(j).getNodeName()) {
+                  case StructureXML.AUDIO_PISTE_AUDIO:
+                    this.liste_piste_audio.add(new PisteAudio(liste.item(j).getChildNodes()));
+                    break;
+                }
+              }
+            }
             break;
         }
       }
@@ -86,47 +100,47 @@ public class Audio {
    * @throws ParserConfigurationException
    */
   public Element getXML(Document document) throws ParserConfigurationException {
-    Element node = document.createElement("audio");
+    Element node = document.createElement(StructureXML.NODE_AUDIO);
 
-    Element codec = document.createElement("codec");
+    Element codec = document.createElement(StructureXML.AUDIO_CODEC);
     codec.setTextContent(this.codec);
     node.appendChild(codec);
 
-    Element profondeur = document.createElement("profondeur");
+    Element profondeur = document.createElement(StructureXML.AUDIO_PROFONDEUR);
     profondeur.setTextContent(this.profondeur + "");
     node.appendChild(profondeur);
 
-    Element echantillonnage = document.createElement("echantillonnage");
-    echantillonnage.setTextContent(this.echantillonnage + "");
-    node.appendChild(echantillonnage);
+    Element frequence = document.createElement(StructureXML.AUDIO_FREQUENCE);
+    frequence.setTextContent(this.frequence + "");
+    node.appendChild(frequence);
 
-    Element piste_audio = document.createElement("liste_piste_audio");
+    Element piste_audio = document.createElement(StructureXML.AUDIO_LISTE_PISTE_AUDIO);
 
     // AJoute toutes les pistes audios :
     for (int i = 0; i < this.liste_piste_audio.size(); i++) {
-      Element piste_audio_courante = document.createElement("piste_audio");
+      Element piste_audio_courante = document.createElement(StructureXML.AUDIO_PISTE_AUDIO);
 
-      Element numero = document.createElement("numero");
+      Element numero = document.createElement(StructureXML.AUDIO_PISTE_AUDIO_NUMERO);
       numero.setTextContent(this.liste_piste_audio.get(i).getNumero() + "");
       piste_audio_courante.appendChild(numero);
 
-      Element version = document.createElement("version");
+      Element version = document.createElement(StructureXML.AUDIO_PISTE_AUDIO_VERSION);
       version.setTextContent(this.liste_piste_audio.get(i).getVersion());
       piste_audio_courante.appendChild(version);
 
-      Element mix = document.createElement("mix");
-      mix.setTextContent(this.liste_piste_audio.get(i).getMix());
-      piste_audio_courante.appendChild(mix);
+      Element mixe = document.createElement(StructureXML.AUDIO_PISTE_AUDIO_MIXE);
+      mixe.setTextContent(this.liste_piste_audio.get(i).getMixe());
+      piste_audio_courante.appendChild(mixe);
 
-      Element loudness = document.createElement("loudness");
+      Element loudness = document.createElement(StructureXML.AUDIO_PISTE_AUDIO_LOUDNESS);
       loudness.setTextContent(this.liste_piste_audio.get(i).getLoudness());
       piste_audio_courante.appendChild(loudness);
 
-      Element systeme_reproduction = document.createElement("systeme_reproduction");
+      Element systeme_reproduction = document.createElement(StructureXML.AUDIO_PISTE_AUDIO_SYSTEME_REPRODUCTION);
       systeme_reproduction.setTextContent(this.liste_piste_audio.get(i).getSystemeReproduction());
       piste_audio_courante.appendChild(systeme_reproduction);
 
-      Element canal = document.createElement("canal");
+      Element canal = document.createElement(StructureXML.AUDIO_PISTE_AUDIO_CANAL);
       canal.setTextContent(this.liste_piste_audio.get(i).getCanal());
       piste_audio_courante.appendChild(canal);
 
@@ -150,10 +164,10 @@ public class Audio {
   /**
    * Définit la fréquence d'échantillonnage de l'audio (en Hz ou kHz).
    *
-   * @param echantillonnage
+   * @param frequence
    */
-  public void setEchantillonnage(int echantillonnage) {
-    this.echantillonnage = echantillonnage;
+  public void setFrequence(int frequence) {
+    this.frequence = frequence;
   }
 
   /**

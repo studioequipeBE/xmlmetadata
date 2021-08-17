@@ -1,5 +1,6 @@
 package com.studioequipe.xmlmetadata.metadata;
 
+import com.studioequipe.xmlmetadata.StructureXML;
 import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -48,20 +49,20 @@ public class SousTitre {
     for (int i = 0; i < sous_titre.getLength(); i++) {
       if (sous_titre.item(i).getNodeType() == Node.ELEMENT_NODE) {
         switch (sous_titre.item(i).getNodeName()) {
-          case "present":
-            this.present = sous_titre.item(i).getTextContent().equals("oui");
+          case StructureXML.SOUSTITRE_PRESENT:
+            this.present = sous_titre.item(i).getTextContent().equals(StructureXML.OUI);
             break;
 
-          case "langue":
+          case StructureXML.SOUSTITRE_LANGUE:
             this.langue = sous_titre.item(i).getTextContent();
             break;
 
-          case "partiel":
-            this.partiel = sous_titre.item(i).getTextContent().equals("oui");
+          case StructureXML.SOUSTITRE_PARTIEL:
+            this.partiel = sous_titre.item(i).getTextContent().equals(StructureXML.OUI);
             break;
 
-          case "sme":
-            this.sme = sous_titre.item(i).getTextContent().equals("oui");
+          case StructureXML.SOUSTITRE_SME:
+            this.sme = sous_titre.item(i).getTextContent().equals(StructureXML.OUI);
             break;
         }
       }
@@ -76,22 +77,22 @@ public class SousTitre {
    * @throws ParserConfigurationException
    */
   public Element getXML(Document document) throws ParserConfigurationException {
-    Element node = document.createElement("soustitre");
+    Element node = document.createElement(StructureXML.NODE_SOUSTITRE);
 
-    Element present = document.createElement("present");
-    present.setTextContent((this.present ? "oui" : "non"));
+    Element present = document.createElement(StructureXML.SOUSTITRE_PRESENT);
+    present.setTextContent((this.present ? StructureXML.OUI : StructureXML.NON));
     node.appendChild(present);
 
-    Element langue = document.createElement("langue");
+    Element langue = document.createElement(StructureXML.SOUSTITRE_LANGUE);
     langue.setTextContent(this.langue);
     node.appendChild(langue);
 
-    Element partiel = document.createElement("partiel");
-    partiel.setTextContent((this.partiel ? "oui" : "non"));
+    Element partiel = document.createElement(StructureXML.SOUSTITRE_PARTIEL);
+    partiel.setTextContent((this.partiel ? StructureXML.OUI : StructureXML.NON));
     node.appendChild(partiel);
 
-    Element sme = document.createElement("sme");
-    sme.setTextContent((this.sme ? "oui" : "non"));
+    Element sme = document.createElement(StructureXML.SOUSTITRE_SME);
+    sme.setTextContent((this.sme ? StructureXML.OUI : StructureXML.NON));
     node.appendChild(sme);
 
     return node;
