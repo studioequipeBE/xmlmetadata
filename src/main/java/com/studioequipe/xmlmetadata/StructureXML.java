@@ -1,7 +1,5 @@
 package com.studioequipe.xmlmetadata;
 
-import org.w3c.dom.Element;
-
 /**
  * Indique le nom des différents node dans l'XML.<br>
  * Cela simplifiera leur utilisation.
@@ -61,7 +59,7 @@ public abstract class StructureXML {
   // public final static String COMMUN_PRODUCTION = "production";
   public final static String GENERALE_TITRE = "titre";
   public final static String GENERALE_TYPE = "type";
-  public final static String GENERALE_POIDS = "size";
+  public final static String GENERALE_POIDS = "poids";
   public final static String GENERALE_CHECKSUM = "checksum";
   // public final static String COMMUN_INFORMATION = "information";
 
@@ -87,7 +85,7 @@ public abstract class StructureXML {
   // Audio :
   public final static String AUDIO_CODEC = "codec";
   public final static String AUDIO_PROFONDEUR = "profondeur";
-  public final static String AUDIO_FREQUENCE = "frquence";
+  public final static String AUDIO_FREQUENCE = "frequence";
 
   public final static String AUDIO_LISTE_PISTE_AUDIO = "liste_piste_audio";
   public final static String AUDIO_PISTE_AUDIO = "piste_audio";

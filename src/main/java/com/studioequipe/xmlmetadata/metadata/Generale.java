@@ -88,6 +88,33 @@ public class Generale {
   }
 
   /**
+   * Récupère le checksum du fichier;
+   *
+   * @return
+   */
+  public String getChecksum() {
+    return this.checksum;
+  }
+
+  /**
+   * Récupère le fichier lié aux métadonnées
+   *
+   * @return
+   */
+  public String getFichierLier() {
+    return this.fichier_lie;
+  }
+
+  /**
+   * Récupère le titre du projet.
+   *
+   * @return
+   */
+  public String getTitre() {
+    return this.titre;
+  }
+
+  /**
    * Génère un XML avec les informations générales.
    *
    * @param document

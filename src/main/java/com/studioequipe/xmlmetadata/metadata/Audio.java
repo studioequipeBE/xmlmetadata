@@ -92,6 +92,10 @@ public class Audio {
     this.liste_piste_audio.add(piste_audio);
   }
 
+  public ArrayList<PisteAudio> getListePisteAudio() {
+    return this.liste_piste_audio;
+  }
+
   /**
    * Récupère sous forme d'XML les informations de l'audio.
    *

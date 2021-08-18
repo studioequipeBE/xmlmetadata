@@ -131,6 +131,15 @@ public class Image extends Metadata {
   }
 
   /**
+   * Récupère le balayage de l'image.
+   *
+   * @return Balayage.
+   */
+  public String getBalayage() {
+    return this.balayage;
+  }
+
+  /**
    * Définit le codec image.
    *
    * @param codec
@@ -180,6 +189,10 @@ public class Image extends Metadata {
     for (int i = 0; i < image.getLength(); i++) {
       if (image.item(i).getNodeType() == Node.ELEMENT_NODE) {
         switch (image.item(i).getNodeName()) {
+          case StructureXML.IMAGE_BALAYAGE:
+            this.balayage = image.item(i).getTextContent();
+            break;
+
           case StructureXML.IMAGE_CODEC:
             this.codec = image.item(i).getTextContent();
             break;
