@@ -10,7 +10,7 @@ import org.w3c.dom.NodeList;
 /**
  * Informations générale sur le fichier.
  *
- * @author Edouard Jeanjean <edouard128@hotmail.com>
+ * @author <a href="mailto:edouard128@hotmail.com">Edouard Jeanjean</a>
  */
 public class Generale {
 
@@ -57,30 +57,30 @@ public class Generale {
   /**
    * Récupère les informations de l'XML.
    *
-   * @param general
+   * @param generale Noeud "générale" venant du fichier XML.
    */
-  public Generale(NodeList general) {
-    for (int i = 0; i < general.getLength(); i++) {
-      if (general.item(i).getNodeType() == Node.ELEMENT_NODE) {
-        switch (general.item(i).getNodeName()) {
+  public Generale(NodeList generale) {
+    for (int i = 0; i < generale.getLength(); i++) {
+      if (generale.item(i).getNodeType() == Node.ELEMENT_NODE) {
+        switch (generale.item(i).getNodeName()) {
           case StructureXML.GENERALE_FICHIER_LIER:
-            this.fichier_lie = general.item(i).getTextContent();
+            this.fichier_lie = generale.item(i).getTextContent();
             break;
 
           case StructureXML.GENERALE_TYPE:
-            this.type_fichier = general.item(i).getTextContent();
+            this.type_fichier = generale.item(i).getTextContent();
             break;
 
           case StructureXML.GENERALE_POIDS:
-            this.poids = general.item(i).getTextContent();
+            this.poids = generale.item(i).getTextContent();
             break;
 
           case StructureXML.GENERALE_TITRE:
-            this.titre = general.item(i).getTextContent();
+            this.titre = generale.item(i).getTextContent();
             break;
 
           case StructureXML.GENERALE_CHECKSUM:
-            this.checksum = general.item(i).getTextContent();
+            this.checksum = generale.item(i).getTextContent();
             break;
         }
       }
@@ -90,7 +90,7 @@ public class Generale {
   /**
    * Récupère le checksum du fichier;
    *
-   * @return
+   * @return Checksum.
    */
   public String getChecksum() {
     return this.checksum;
@@ -99,7 +99,7 @@ public class Generale {
   /**
    * Récupère le fichier lié aux métadonnées
    *
-   * @return
+   * @return Fichier lié.
    */
   public String getFichierLier() {
     return this.fichier_lie;
@@ -108,7 +108,7 @@ public class Generale {
   /**
    * Récupère le titre du projet.
    *
-   * @return
+   * @return Titre.
    */
   public String getTitre() {
     return this.titre;
@@ -117,10 +117,11 @@ public class Generale {
   /**
    * Génère un XML avec les informations générales.
    *
-   * @param document
-   * @return
+   * @param document Fichier XML à générer.
    *
-   * @throws ParserConfigurationException
+   * @return Noeud à ajouter au fichier XML à générer.
+   *
+   * @throws ParserConfigurationException Erreur d'analyse de la configuration.
    */
   public Element getXML(Document document) throws ParserConfigurationException {
     Element node = document.createElement(StructureXML.NODE_GENERALE);
@@ -149,6 +150,15 @@ public class Generale {
   }
 
   /**
+   * Définit le checksum.
+   *
+   * @param checksum Checksum.
+   */
+  public void setChecksum(String checksum) {
+    this.checksum = checksum;
+  }
+
+  /**
    * Définit le fichier lié.
    *
    * @param fichier_lie Nom du fichier lié.
@@ -158,18 +168,9 @@ public class Generale {
   }
 
   /**
-   * Définit le type de fichier.
-   *
-   * @param type_fichier
-   */
-  public void setTypeFichier(String type_fichier) {
-    this.type_fichier = type_fichier;
-  }
-
-  /**
    * Définit le poids.
    *
-   * @param poids
+   * @param poids Poids.
    */
   public void setPoids(String poids) {
     this.poids = poids;
@@ -178,19 +179,19 @@ public class Generale {
   /**
    * Définit le titre.
    *
-   * @param titre
+   * @param titre Titre.
    */
   public void setTitre(String titre) {
     this.titre = titre;
   }
 
   /**
-   * Définit le checksum.
+   * Définit le type de fichier.
    *
-   * @param checksum
+   * @param type_fichier Type de fichier.
    */
-  public void setChecksum(String checksum) {
-    this.checksum = checksum;
+  public void setTypeFichier(String type_fichier) {
+    this.type_fichier = type_fichier;
   }
 
 }

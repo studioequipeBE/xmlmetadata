@@ -10,7 +10,7 @@ import org.w3c.dom.NodeList;
 /**
  * Informations sur l'image du fichier.
  *
- * @author Edouard Jeanjean <edouard128@hotmail.com>
+ * @author <a href="mailto:edouard128@hotmail.com">Edouard Jeanjean</a>
  */
 public class Image extends Metadata {
 
@@ -58,7 +58,7 @@ public class Image extends Metadata {
   /**
    * Récupère les informations d'un document XML.
    *
-   * @param image
+   * @param image Noeud image.
    */
   public Image(NodeList image) {
     super(image);
@@ -67,9 +67,11 @@ public class Image extends Metadata {
   /**
    * Définit un XML avec les informations images.
    *
-   * @param document
-   * @return
-   * @throws ParserConfigurationException
+   * @param document Fichier XML à extraire.
+   *
+   * @return Noeud à ajouter au fichier XML.
+   *
+   * @throws ParserConfigurationException Erreur d'analyse de la configuration.
    */
   @Override
   public Element getXML(Document document) throws ParserConfigurationException {
@@ -106,7 +108,7 @@ public class Image extends Metadata {
   /**
    * Récupère le codec.
    *
-   * @return
+   * @return Codec.
    */
   public String getCodec() {
     return this.codec;
@@ -115,7 +117,7 @@ public class Image extends Metadata {
   /**
    * Ratio de l'image.
    *
-   * @return
+   * @return Ratio.
    */
   public String getRatio() {
     return this.ratio;
@@ -124,7 +126,7 @@ public class Image extends Metadata {
   /**
    * Résolution en largeur et hauteur.
    *
-   * @return
+   * @return Résolution.
    */
   public String getResolution() {
     return this.largeur + "x" + this.hauteur;
@@ -140,33 +142,6 @@ public class Image extends Metadata {
   }
 
   /**
-   * Définit le codec image.
-   *
-   * @param codec
-   */
-  public void setCodec(String codec) {
-    this.codec = codec;
-  }
-
-  /**
-   * Définit la hauteur de l'image.
-   *
-   * @param hauteur
-   */
-  public void setHauteur(int hauteur) {
-    this.hauteur = hauteur;
-  }
-
-  /**
-   * Définit la largeur de l'image.
-   *
-   * @param largeur
-   */
-  public void setLargeur(int largeur) {
-    this.largeur = largeur;
-  }
-
-  /**
    * Définit le balayage de l'image.
    *
    * @param balayage Le balayage.
@@ -176,9 +151,36 @@ public class Image extends Metadata {
   }
 
   /**
+   * Définit le codec image.
+   *
+   * @param codec Codec.
+   */
+  public void setCodec(String codec) {
+    this.codec = codec;
+  }
+
+  /**
+   * Définit la hauteur de l'image.
+   *
+   * @param hauteur Hauteur.
+   */
+  public void setHauteur(int hauteur) {
+    this.hauteur = hauteur;
+  }
+
+  /**
+   * Définit la largeur de l'image.
+   *
+   * @param largeur Largeur.
+   */
+  public void setLargeur(int largeur) {
+    this.largeur = largeur;
+  }
+
+  /**
    * Définit le ratio.
    *
-   * @param ratio
+   * @param ratio Ratio.
    */
   public void setRatio(String ratio) {
     this.ratio = ratio;

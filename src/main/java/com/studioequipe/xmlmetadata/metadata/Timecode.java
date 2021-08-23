@@ -10,7 +10,7 @@ import org.w3c.dom.NodeList;
 /**
  * Informations timecode sur le projet.
  *
- * @author Edouard Jeanjean <edouard128@hotmail.com>
+ * @author <a href="mailto:edouard128@hotmail.com">Edouard Jeanjean</a>
  */
 public class Timecode {
 
@@ -43,7 +43,7 @@ public class Timecode {
   /**
    * Récupère les informations de l'XML.
    *
-   * @param timecode
+   * @param timecode Le noeud "timecode" du fichier XML.
    */
   public Timecode(NodeList timecode) {
     for (int i = 0; i < timecode.getLength(); i++) {
@@ -75,7 +75,7 @@ public class Timecode {
    * @param document XML à se baser.
    * @return XML.
    *
-   * @throws ParserConfigurationException
+   * @throws ParserConfigurationException Erreur d'analyse de la configuration.
    */
   public Element getXML(Document document) throws ParserConfigurationException {
     Element node = document.createElement(StructureXML.NODE_TIMECODE);
@@ -100,21 +100,21 @@ public class Timecode {
   }
 
   /**
-   * Définit le timecode début.
+   * Durée du fichier.
    *
-   * @param timecode_debut Timecode début.
+   * @return Durée.
    */
-  public void setTimecodeDebut(String timecode_debut) {
-    this.timecode_debut = timecode_debut;
+  public String getDuree() {
+    return this.duree;
   }
 
   /**
-   * Définit la durée.
+   * Récupère le framerate.
    *
-   * @param duree
+   * @return Framerate.
    */
-  public void setDuree(String duree) {
-    this.duree = duree;
+  public String getFramerate() {
+    return this.framerate;
   }
 
   /**
@@ -127,12 +127,12 @@ public class Timecode {
   }
 
   /**
-   * Durée du fichier.
+   * Définit la durée.
    *
-   * @return
+   * @param duree Durée.
    */
-  public String getDuree() {
-    return this.duree;
+  public void setDuree(String duree) {
+    this.duree = duree;
   }
 
   /**
@@ -145,11 +145,12 @@ public class Timecode {
   }
 
   /**
-   * Récupère le framerate.
+   * Définit le timecode début.
    *
-   * @return Framerate.
+   * @param timecode_debut Timecode début.
    */
-  public String getFramerate() {
-    return this.framerate;
+  public void setTimecodeDebut(String timecode_debut) {
+    this.timecode_debut = timecode_debut;
   }
+
 }

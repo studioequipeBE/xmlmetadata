@@ -7,7 +7,7 @@ import org.w3c.dom.NodeList;
 /**
  * Un élément du fichier.
  *
- * @author Edouard Jeanjean <edouard128@hotmail.com>
+ * @author <a href="mailto:edouard128@hotmail.com">Edouard Jeanjean</a>
  */
 public class ContenuElement {
 
@@ -29,7 +29,7 @@ public class ContenuElement {
   /**
    * Récupère les informations depuis l'XML.
    *
-   * @param contenu_element
+   * @param contenu_element Noeud "contenu_element".
    */
   public ContenuElement(NodeList contenu_element) {
     for (int i = 0; i < contenu_element.getLength(); i++) {
@@ -54,9 +54,9 @@ public class ContenuElement {
   /**
    * Définit un élement depuis les informations.
    *
-   * @param timecode_debut
-   * @param timecode_fin
-   * @param description
+   * @param timecode_debut Timecode début.
+   * @param timecode_fin Timecode de fin.
+   * @param description Description du contenu.
    */
   public ContenuElement(String timecode_debut, String timecode_fin, String description) {
     this.timecode_debut = timecode_debut;
@@ -65,27 +65,27 @@ public class ContenuElement {
   }
 
   /**
-   * Timecode début.
+   * Récupère le timecode début.
    *
-   * @return
+   * @return Timecode début.
    */
   public String getTimecodeDebut() {
     return this.timecode_debut;
   }
 
   /**
-   * Timecode de fin.
+   * Récupère le timecode de fin.
    *
-   * @return
+   * @return Timecode de fin.
    */
   public String getTimecodeFin() {
     return this.timecode_fin;
   }
 
   /**
-   * Description de l'élément.
+   * Récupère la description de l'élément.
    *
-   * @return
+   * @return Description.
    */
   public String getDescription() {
     return this.description;

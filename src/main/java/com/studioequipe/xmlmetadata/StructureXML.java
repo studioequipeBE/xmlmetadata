@@ -4,7 +4,7 @@ package com.studioequipe.xmlmetadata;
  * Indique le nom des différents node dans l'XML.<br>
  * Cela simplifiera leur utilisation.
  *
- * @author Edouard JEANJEAN <edouard128@hotmail.com>
+ * @author <a href="mailto:edouard128@hotmail.com">Edouard Jeanjean</a>
  * @version 0.1.0
  */
 public abstract class StructureXML {

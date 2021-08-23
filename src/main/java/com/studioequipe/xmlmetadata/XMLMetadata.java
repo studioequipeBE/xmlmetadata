@@ -29,7 +29,7 @@ import org.xml.sax.SAXException;
  * détail le contenu des pistes audio ainsi que le "contenu" utilisé par les
  * rapports QC.
  *
- * @author Edouard Jeanjean <edouard128@hotmail.com>
+ * @author <a href="mailto:edouard128@hotmail.com">Edouard Jeanjean</a>
  */
 public class XMLMetadata {
 
@@ -99,10 +99,11 @@ public class XMLMetadata {
    * @param fichier_xml Le fichier à lire ou écrire.
    * @param mode Définit si on écrit ou lit le fichier.
    *
-   * @throws ModeNotFoundException
-   * @throws ParserConfigurationException
-   * @throws SAXException
-   * @throws IOException
+   * @throws ModeNotFoundException Erreur si le mode renseigné n'est pas trouvé.
+   * @throws ParserConfigurationException Erreur si la configuration du XML se
+   * passe mal.
+   * @throws SAXException Erreur en cas de mal conversion d'élément de l'XML.
+   * @throws IOException Erreur en cas I/O dans l'XML généré.
    */
   public XMLMetadata(File fichier_xml, int mode) throws ModeNotFoundException, ParserConfigurationException, SAXException, IOException {
 
@@ -130,34 +131,52 @@ public class XMLMetadata {
   /**
    * Récupère les informations sur l'audio.
    *
-   * @return
+   * @return Métadonnées sur l'audio.
    */
   public Audio getAudio() {
     return this.audio;
   }
 
   /**
-   * Récupère les informations sur l'image.
+   * Récupère les informations sur le contenu.
    *
-   * @return
+   * @return Information sur le contenu.
    */
-  public Image getImage() {
-    return this.image;
+  public Contenu getContenu() {
+    return this.contenu;
   }
 
   /**
-   * Récupère les informations générale.
+   * Récupère les informations générales.
    *
-   * @return
+   * @return Métadonnées générales.
    */
   public Generale getGeneral() {
     return this.general;
   }
 
   /**
+   * Récupère les informations sur l'image.
+   *
+   * @return Métadonnées sur l'image.
+   */
+  public Image getImage() {
+    return this.image;
+  }
+
+  /**
+   * Récupère le rapport QC lié au fichier.
+   *
+   * @return Rapport QC.
+   */
+  public RapportQC getRapportQC() {
+    return this.rapport_qc;
+  }
+
+  /**
    * Récupère les informations sur les sous-titres.
    *
-   * @return
+   * @return Métédonnées sur les sous-titres.
    */
   public SousTitre getSousTitre() {
     return this.sous_titre;
@@ -166,32 +185,18 @@ public class XMLMetadata {
   /**
    * Récupère les informations de timecode.
    *
-   * @return
+   * @return Métadonnées relative au timecode.
    */
   public Timecode getTimecode() {
     return this.timecode;
   }
 
   /**
-   * Récupère les informations sur le contenu.
-   *
-   * @return
-   */
-  public Contenu getContenu() {
-    return this.contenu;
-  }
-
-  /**
-   * Récupère le rapport QC lié au fichier.
-   *
-   * @return
-   */
-  public RapportQC getRapportQC() {
-    return this.rapport_qc;
-  }
-
-  /**
    * Récupère les informations de l'XML.
+   *
+   * @throws ParserConfigurationException
+   * @throws SAXException Erreur en cas de mal conversion d'élément de l'XML.
+   * @throws IOException Erreur en cas I/O dans l'XML généré.
    */
   private void extract() throws ParserConfigurationException, SAXException, IOException {
     Element racine;
@@ -239,7 +244,7 @@ public class XMLMetadata {
   /**
    * Récupère la version de l'XML.
    *
-   * @return
+   * @return Version de l'XML.
    */
   public String getXMLVersion() {
     return this.XMLversion;
@@ -253,8 +258,9 @@ public class XMLMetadata {
   /**
    * Ecrit le fichier XML.
    *
-   * @throws javax.xml.parsers.ParserConfigurationException
-   * @throws javax.xml.transform.TransformerException
+   * @throws ParserConfigurationException Erreur si la configuration du XML se
+   * passe mal.
+   * @throws TransformerException Erreur lors de la création de l'XML.
    */
   public void close() throws ParserConfigurationException, TransformerException {
 
@@ -304,7 +310,9 @@ public class XMLMetadata {
    *
    * @param nom
    * @param valeur
+   *
    * @return
+   *
    * @throws ParserConfigurationException
    */
   private Element addChild(String nom, String valeur) throws ParserConfigurationException {

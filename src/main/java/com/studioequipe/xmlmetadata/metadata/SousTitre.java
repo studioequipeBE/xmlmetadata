@@ -10,7 +10,7 @@ import org.w3c.dom.NodeList;
 /**
  * Définit les informations de sous-titre.
  *
- * @author Edouard Jeanjean <edouard128@hotmail.com>
+ * @author <a href="mailto:edouard128@hotmail.com">Edouard Jeanjean</a>
  */
 public class SousTitre {
 
@@ -43,7 +43,7 @@ public class SousTitre {
   /**
    * Récupère les informations de l'XML.
    *
-   * @param sous_titre
+   * @param sous_titre Noeud "soustitre".
    */
   public SousTitre(NodeList sous_titre) {
     for (int i = 0; i < sous_titre.getLength(); i++) {
@@ -72,9 +72,11 @@ public class SousTitre {
   /**
    * Génère un XML avec les informations de sous-titre.
    *
-   * @param document
-   * @return
-   * @throws ParserConfigurationException
+   * @param document Fichier XML à générer.
+   *
+   * @return Noeud à ajouter au fichier XML.
+   *
+   * @throws ParserConfigurationException Erreur d'analyse de la configuration.
    */
   public Element getXML(Document document) throws ParserConfigurationException {
     Element node = document.createElement(StructureXML.NODE_SOUSTITRE);

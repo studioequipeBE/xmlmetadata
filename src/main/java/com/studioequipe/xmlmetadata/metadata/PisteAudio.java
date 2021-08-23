@@ -7,7 +7,7 @@ import org.w3c.dom.NodeList;
 /**
  * Les pistes audios dans la partie audio.
  *
- * @author Edouard Jeanjean <edouard128@hotmail.com>
+ * @author <a href="mailto:edouard128@hotmail.com">Edouard Jeanjean</a>
  */
 public class PisteAudio {
 
@@ -41,6 +41,11 @@ public class PisteAudio {
    */
   private String loudness;
 
+  /**
+   * Construit une piste audio sur base du noeud reçu.
+   *
+   * @param piste_audio Le noeud avec la piste audio.
+   */
   public PisteAudio(NodeList piste_audio) {
     for (int i = 0; i < piste_audio.getLength(); i++) {
       if (piste_audio.item(i).getNodeType() == Node.ELEMENT_NODE) {
@@ -73,6 +78,16 @@ public class PisteAudio {
     }
   }
 
+  /**
+   * Définit une piste audio selon les informations indiquées.
+   *
+   * @param numero Numéro de piste.
+   * @param version Version : VO, VF, ...
+   * @param mixe Mixe : BR, TV, ...
+   * @param systeme_reproduction Système de reproduction : 2.0, 5.1, ...
+   * @param canal Canal audio : L, R, C, ...
+   * @param loudness Loudness en dBFs.
+   */
   public PisteAudio(int numero, String version, String mixe, String systeme_reproduction, String canal, String loudness) {
     this.numero = numero;
     this.version = version;
@@ -83,45 +98,9 @@ public class PisteAudio {
   }
 
   /**
-   * Récupère le numéro de piste.
-   *
-   * @return
-   */
-  public int getNumero() {
-    return this.numero;
-  }
-
-  /**
-   * Récupère la version audio.
-   *
-   * @return
-   */
-  public String getVersion() {
-    return this.version;
-  }
-
-  /**
-   * Récupère le mix.
-   *
-   * @return
-   */
-  public String getMixe() {
-    return this.mixe;
-  }
-
-  /**
-   * Récupère le système de reproduction.
-   *
-   * @return
-   */
-  public String getSystemeReproduction() {
-    return this.systeme_reproduction;
-  }
-
-  /**
    * Récupère le canal de la piste.
    *
-   * @return
+   * @return Canal.
    */
   public String getCanal() {
     return this.canal;
@@ -130,9 +109,45 @@ public class PisteAudio {
   /**
    * Récupère le loudness de la piste.
    *
-   * @return
+   * @return Loudness.
    */
   public String getLoudness() {
     return this.loudness;
+  }
+
+  /**
+   * Récupère le mix.
+   *
+   * @return Mixe.
+   */
+  public String getMixe() {
+    return this.mixe;
+  }
+
+  /**
+   * Récupère le numéro de piste.
+   *
+   * @return Numéro de piste.
+   */
+  public int getNumero() {
+    return this.numero;
+  }
+
+  /**
+   * Récupère le système de reproduction.
+   *
+   * @return Système de production.
+   */
+  public String getSystemeReproduction() {
+    return this.systeme_reproduction;
+  }
+
+  /**
+   * Récupère la version audio.
+   *
+   * @return Version.
+   */
+  public String getVersion() {
+    return this.version;
   }
 }

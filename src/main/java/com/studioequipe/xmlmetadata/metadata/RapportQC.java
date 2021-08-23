@@ -10,7 +10,7 @@ import org.w3c.dom.NodeList;
  * Les informations lié au QC.<br>
  * Lié au rapport QC fait dans le logicel...
  *
- * @author Edouard Jeanjean <edouard128@hotmail.com>
+ * @author <a href="mailto:edouard128@hotmail.com">Edouard Jeanjean</a>
  */
 public class RapportQC {
 
@@ -23,19 +23,19 @@ public class RapportQC {
   /**
    * Récupère les informations de l'XML.
    *
-   * @param rapport_qc
+   * @param rapport_qc Le noeud "rapport_qc".
    */
   public RapportQC(NodeList rapport_qc) {
-
   }
 
   /**
    * Génère un XML avec le rapport QC.
    *
    * @param document XML à se baser.
-   * @return XML.
    *
-   * @throws ParserConfigurationException
+   * @return Noeud à ajouter au fichier XML.
+   *
+   * @throws ParserConfigurationException Erreur d'analyse de la configuration.
    */
   public Element getXML(Document document) throws ParserConfigurationException {
     Element node = document.createElement(StructureXML.NODE_RAPPORT_QC);

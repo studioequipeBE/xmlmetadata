@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Main pour les tests.
  *
- * @author Edouard Jeanjean <edouard128@hotmail.com>
+ * @author <a href="mailto:edouard128@hotmail.com">Edouard Jeanjean</a>
  */
 public class Main {
 
@@ -78,8 +78,8 @@ public class Main {
         System.out.println("* C" + i + " : " + liste_contenu.get(i).getTimecodeDebut() + " - " + liste_contenu.get(i).getTimecodeFin() + " / " + liste_contenu.get(i).getDescription());
       }
 
-    } catch (Exception ex) {
-      ex.printStackTrace();
+    } catch (Exception exception) {
+      exception.printStackTrace();
     }
   }
 }

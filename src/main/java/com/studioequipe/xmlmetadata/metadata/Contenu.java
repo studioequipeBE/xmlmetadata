@@ -11,7 +11,7 @@ import org.w3c.dom.NodeList;
 /**
  * Contenu du fichier.
  *
- * @author Edouard Jeanjean <edouard128@hotmail.com>
+ * @author <a href="mailto:edouard128@hotmail.com">Edouard Jeanjean</a>
  */
 public class Contenu {
 
@@ -24,14 +24,10 @@ public class Contenu {
     this.liste_contenu = new ArrayList<ContenuElement>();
   }
 
-  public void addContenu(ContenuElement contenu_element) {
-    this.liste_contenu.add(contenu_element);
-  }
-
   /**
    * Récupère les informations de l'XML.
    *
-   * @param contenu
+   * @param contenu Le noeud "contenu" (XML).
    */
   public Contenu(NodeList contenu) {
     this.liste_contenu = new ArrayList<ContenuElement>();
@@ -58,9 +54,18 @@ public class Contenu {
   }
 
   /**
+   * Ajoute un contenu.
+   *
+   * @param contenu_element L'élément à ajouter.
+   */
+  public void addContenu(ContenuElement contenu_element) {
+    this.liste_contenu.add(contenu_element);
+  }
+
+  /**
    * Récupère la liste du contenu.
    *
-   * @return
+   * @return Liste de tout le contenu.
    */
   public ArrayList<ContenuElement> getListe() {
     return this.liste_contenu;
@@ -69,9 +74,11 @@ public class Contenu {
   /**
    * Récupères sous forme d'XML les informations du contenu.
    *
-   * @param document
-   * @return
-   * @throws ParserConfigurationException
+   * @param document Le fichier XML a générer.
+   *
+   * @return Noeud à ajouter au fichier XML.
+   *
+   * @throws ParserConfigurationException Erreur d'analyse de la configuration.
    */
   public Element getXML(Document document) throws ParserConfigurationException {
     Element node = document.createElement(StructureXML.NODE_CONTENU);

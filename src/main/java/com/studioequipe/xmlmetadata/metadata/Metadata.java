@@ -8,7 +8,7 @@ import org.w3c.dom.NodeList;
 /**
  * Définit ce qui doit se trouver dans les fichiers métadonnées.
  *
- * @author Edouard Jeanjean <edouard128@hotmail.com>
+ * @author <a href="mailto:edouard128@hotmail.com">Edouard Jeanjean</a>
  */
 public abstract class Metadata {
 
@@ -21,7 +21,7 @@ public abstract class Metadata {
   /**
    * Récupères les informations depuis l'XML.
    *
-   * @param node
+   * @param node Le noeud avec les informations à extraire.
    */
   public Metadata(NodeList node) {
     set(node);
@@ -30,17 +30,18 @@ public abstract class Metadata {
   /**
    * Définit les informations de la classe sur base du node reçu en paramètre.
    *
-   * @param node
-   * @return
+   * @param node Le noeud avec les informations à extraire.
    */
   public abstract void set(NodeList node);
 
   /**
    * Récupère le contenu sous forme de document XML.
    *
-   * @param document
+   * @param document Fichier XML à générer.
+   *
    * @return Document XML.
-   * @throws javax.xml.parsers.ParserConfigurationException
+   *
+   * @throws ParserConfigurationException Erreur d'analyse de la configuration.
    */
   public abstract Element getXML(Document document) throws ParserConfigurationException;
 }

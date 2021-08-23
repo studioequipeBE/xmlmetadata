@@ -2,7 +2,7 @@ package com.studioequipe.xmlmetadata.exception;
 
 /**
  *
- * @authorEdouard Jeanjean <edouard128@hotmail.com>
+ * @author <a href="mailto:edouard128@hotmail.com">Edouard Jeanjean</a>
  */
 public class ModeNotFoundException extends Exception {
 

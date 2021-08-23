@@ -11,7 +11,7 @@ import org.w3c.dom.NodeList;
 /**
  * L'audio du fichier.
  *
- * @author Edouard Jeanjean <edouard128@hotmail.com>
+ * @author <a href="mailto:edouard128@hotmail.com">Edouard Jeanjean</a>
  */
 public class Audio {
 
@@ -86,12 +86,17 @@ public class Audio {
   /**
    * Ajoute une piste audio.
    *
-   * @param piste_audio
+   * @param piste_audio Piste audio.
    */
   public void addPisteAudio(PisteAudio piste_audio) {
     this.liste_piste_audio.add(piste_audio);
   }
 
+  /**
+   * Récupère toutes les pistes audios.
+   *
+   * @return Liste des pistes audios.
+   */
   public ArrayList<PisteAudio> getListePisteAudio() {
     return this.liste_piste_audio;
   }
@@ -99,9 +104,11 @@ public class Audio {
   /**
    * Récupère sous forme d'XML les informations de l'audio.
    *
-   * @param document
-   * @return
-   * @throws ParserConfigurationException
+   * @param document Document XML à générer.
+   *
+   * @return Noeud avec les informations sur l'audio.
+   *
+   * @throws ParserConfigurationException Erreur d'analyse de la configuration.
    */
   public Element getXML(Document document) throws ParserConfigurationException {
     Element node = document.createElement(StructureXML.NODE_AUDIO);
@@ -159,7 +166,7 @@ public class Audio {
   /**
    * Définit le codec audio.
    *
-   * @param codec
+   * @param codec Codec audio.
    */
   public void setCodec(String codec) {
     this.codec = codec;
@@ -168,7 +175,7 @@ public class Audio {
   /**
    * Définit la fréquence d'échantillonnage de l'audio (en Hz ou kHz).
    *
-   * @param frequence
+   * @param frequence Fréquence audio.
    */
   public void setFrequence(int frequence) {
     this.frequence = frequence;
@@ -177,7 +184,7 @@ public class Audio {
   /**
    * Définit la profondeur (en bit) de l'audio.
    *
-   * @param profondeur
+   * @param profondeur Profondeur (en bit) de l'audio.
    */
   public void setProfondeur(int profondeur) {
     this.profondeur = profondeur;
