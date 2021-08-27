@@ -17,6 +17,13 @@ import java.util.ArrayList;
  */
 public class Main {
 
+  /**
+   * Test le projet.
+   *
+   * @deprecated Utiliser que pour des tests (mais ne devrait pas être ici.).
+   *
+   * @param args Argument reçu par l'application.
+   */
   public static void main(String[] args) {
     try {
       XMLMetadata metadata_write = new XMLMetadata(new File("/Users/mp-dailies/Desktop/metadata.xml"), XMLMetadata.WRITE);
